@@ -65,7 +65,7 @@ class Task
         $data = array(
             'title' => $params['title'],
             'description' => $params['description'],
-            'status' => 'waiting',
+            'status' => 'pending',
         );
         $string[$last_id+1] = $data;
         self::writeJson($string);
@@ -112,7 +112,7 @@ class Task
                 'status' => 'Not Found',
             );
         }
-        $string[$id]['status'] = $string[$id]['status']=='waiting'?'done':'waiting';
+        $string[$id]['status'] = $string[$id]['status']=='pending'?'done':'pending';
         self::writeJson($string);
         return array(
             'status_code' => 200,
