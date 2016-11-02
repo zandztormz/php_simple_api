@@ -36,8 +36,13 @@ class Task
     public function save($params)
     {
         $string = self::readJson();
-        end($string);
-        $last_id = key($string);
+
+        if(count($string)==0) {
+            $last_id = 0;
+        }else{
+            end($string);
+            $last_id = key($string);
+        }
 
         if ($params['title'] == '') {
 
@@ -94,6 +99,7 @@ class Task
         return array(
             'status_code' => 200,
             'status' => 'ok',
+            'data' => $id
         );
     }
 
@@ -128,6 +134,7 @@ class Task
         return array(
             'status_code' => 200,
             'status' => 'ok',
+            'data' => $id
         );
     }
 
